@@ -1,4 +1,4 @@
-GASNET_VERSION ?= GASNet-2023.3.0
+GASNET_VERSION ?= stable-2023_08_04
 
 # these patches are applied to the unpacked GASNet source directory before
 #  running configure

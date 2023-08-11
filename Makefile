@@ -96,6 +96,9 @@ $(GASNET_SOURCE_DIR)/configure : $(GASNET_VERSION).tar.gz
 	# make sure tar unpacks to the right directory even if the root directory name does not match
 	tar -zxf $< --strip-components=1 -C $(GASNET_SOURCE_DIR)
 	$(foreach p,$(PATCHES),patch -p1 -d$(GASNET_SOURCE_DIR) < $p &&) true
+	if [[ ! -e "$@" ]]; then \
+		$(GASNET_SOURCE_DIR)/Bootstrap; \
+	fi
 	touch -c $@
 
 $(GASNET_SOURCE_DIR)/cross-configure : $(GASNET_SOURCE_DIR)/configure
